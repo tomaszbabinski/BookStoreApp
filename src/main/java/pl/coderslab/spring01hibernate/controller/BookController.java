@@ -2,8 +2,8 @@ package pl.coderslab.spring01hibernate.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.spring01hibernate.dao.AuthorDao;
 import pl.coderslab.spring01hibernate.dao.BookDao;
 import pl.coderslab.spring01hibernate.dao.PublisherDao;
@@ -14,7 +14,7 @@ import pl.coderslab.spring01hibernate.entity.Publisher;
 import java.util.List;
 
 @Controller
-@RequestMapping(value="/books",produces = "text/plain;charset=UTF-8")
+@RequestMapping(value="/books")
 public class BookController {
 
 
@@ -27,6 +27,20 @@ public class BookController {
         this.publisherDao = publisherDao;
         this.bookDao = bookDao;
         this.authorDao = authorDao;
+    }
+
+
+    @GetMapping("/addBook")
+    public String addBook(Model model){
+        model.addAttribute("book",new Book());
+        return "/book/addBook";
+    }
+
+    @PostMapping("/addBook")
+    @ResponseBody
+    public String addBookProcess(@ModelAttribute Book book){
+        bookDao.saveBook(book);
+        return "zapisano";
     }
 
 

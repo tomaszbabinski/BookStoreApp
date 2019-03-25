@@ -7,9 +7,8 @@
     <title>Add Form</title>
 </head>
 <body>
-<form:form method="post" modelAttribute="book">
+<form:form method="post" modelAttribute="book" action="addBook">
     <label for="title">title <form:input type="text" path="title" id="title"></form:input></label>
-
     <label for="publisher">Publisher <form:select path="publisher.id" id="publisher">
 
         <form:options items="${publishers}" itemLabel="name" itemValue="id"></form:options>
