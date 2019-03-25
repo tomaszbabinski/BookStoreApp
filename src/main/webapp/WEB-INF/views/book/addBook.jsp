@@ -16,5 +16,7 @@
 
     <div><input type="submit"></div>
 </form:form>
+
+<a href="../books/showAllBooks">Show all books</a>
 </body>
 </html>

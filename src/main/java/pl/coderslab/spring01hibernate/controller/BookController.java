@@ -43,6 +43,12 @@ public class BookController {
         return "zapisano";
     }
 
+    @GetMapping("/showAllBooks")
+    public String showAllBooks(Model model){
+        model.addAttribute("books",getBooks());
+        return "/book/allBooks";
+    }
+
 
 
 
