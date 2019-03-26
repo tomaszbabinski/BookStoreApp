@@ -57,6 +57,21 @@ public class BookController {
         return "/book/bookForms";
     }
 
+    @GetMapping(path = "/getBook/{id}")
+    public String editBook(@PathVariable Long id, Model model) {
+        model.addAttribute("book", bookDao.findById(id));
+
+        return "/book/bookForms";
+    }
+
+    @PostMapping(path = "/getBook/**")
+    public String editBook(@ModelAttribute Book book) {
+
+        bookDao.update(book);
+
+        return "redirect:/books/presentBookForm";
+    }
+
 
     @ModelAttribute("publishers")
     private List<Publisher> getPublishers() {

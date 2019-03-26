@@ -16,5 +16,16 @@
         <li></li>
         <li></li>
     </ul>
+
+    <h2>Book data:</h2>
+
+    <form:form method="post" modelAttribute="book" action="getBook">
+        <h2>
+            Title:
+            <form:input path="title" />
+        </h2>
+             <form:hidden path="id" />
+            <input type="submit" value="Send">
+    </form:form>
 </body>
 </html>
