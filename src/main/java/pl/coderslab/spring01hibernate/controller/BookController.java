@@ -49,7 +49,13 @@ public class BookController {
         return "/book/allBooks";
     }
 
+    /*Form Entities Exercises*/
 
+    @GetMapping("/presentBookForm")
+    public String bookForm(Model model){
+        model.addAttribute("book", new Book());
+        return "/book/bookForms";
+    }
 
 
     @ModelAttribute("publishers")
