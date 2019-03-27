@@ -12,8 +12,8 @@
 
     <h1>Menu</h1>
     <ul>
-        <li><a href="../books/addBook">Add new Book</a></li>
-        <li><a href="../books/showAllBooks">Show all books</a></li>
+        <li><a href="http://localhost:8080/books/addBook">Add new Book</a></li>
+        <li><a href="http://localhost:8080/books/showAllBooks">Show all books</a></li>
         <li></li>
         <li></li>
     </ul>
@@ -35,7 +35,7 @@
                 <td>${book.rating}</td>
                 <td>${book.description}</td>
                 <td>${book.getPublisher().getName()}</td>
-                <td><a href="getBook/${book.id}" >Edit</a> | <a href="deleteBook/${book.id}"> Delete</a></td>
+                <td><a href="http://localhost:8080/books/getBook/${book.id}" >Edit</a> | <a href="http://localhost:8080/books/confirmDeletingBook/${book.id}"> Delete</a></td>
             </tr>
         </c:forEach>
 

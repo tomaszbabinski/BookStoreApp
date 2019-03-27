@@ -57,20 +57,36 @@ public class BookController {
         return "/book/bookForms";
     }
 
-    @GetMapping(path = "/getBook/{id}")
+    @GetMapping("/getBook/{id}")
     public String editBook(@PathVariable Long id, Model model) {
         model.addAttribute("book", bookDao.findById(id));
 
         return "/book/bookForms";
     }
 
-    @PostMapping(path = "/getBook/**")
+    @PostMapping("/getBook/**")
     public String editBook(@ModelAttribute Book book) {
 
         bookDao.update(book);
 
         return "redirect:/books/presentBookForm";
     }
+
+    @GetMapping("/confirmDeletingBook/{id}")
+    public String deleteBook(@PathVariable Long id, Model model){
+        model.addAttribute("book", bookDao.findById(id));
+        return "/book/deleteConfirmation";
+    }
+
+    @GetMapping("/deleteBook/{id}")
+    public String deleteBook(@PathVariable Long id){
+        bookDao.delete(bookDao.findById(id));
+        return "/book/allBooks";
+    }
+
+
+
+
 
 
     @ModelAttribute("publishers")
