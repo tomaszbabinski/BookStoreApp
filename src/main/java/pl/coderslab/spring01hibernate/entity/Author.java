@@ -21,11 +21,6 @@ public class Author {
 
     private String lastName;
 
-    @ManyToMany(mappedBy = "authors", fetch = FetchType.EAGER)
-    //@JsonIgnore
-    private Set<Book> books = new HashSet<>();
-
-
     private String email;
 
     private String pesel;
@@ -35,5 +30,8 @@ public class Author {
     public Author() {
     }
 
-
+    public Author(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 }

@@ -41,5 +41,10 @@ public class Book {
         this.publisher = publisher;
     }
 
+    public Book(String title, Author author) {
+        this.title = title;
+        this.authors.add(author);
+    }
+
 
    }

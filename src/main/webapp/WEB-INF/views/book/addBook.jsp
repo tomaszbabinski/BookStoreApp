@@ -8,11 +8,18 @@
 </head>
 <body>
 <form:form method="post" modelAttribute="book" action="addBook">
-    <label for="title">title <form:input type="text" path="title" id="title"></form:input></label>
-    <label for="publisher">Publisher <form:select path="publisher.id" id="publisher">
-
+    <label for="title">
+        title <form:input type="text" path="title" id="title"></form:input>
+    </label><br>
+    <label for="publisher">
+        Publisher <form:select path="publisher.id" id="publisher">
         <form:options items="${publishers}" itemLabel="name" itemValue="id"></form:options>
-            </form:select></label>
+            </form:select>
+    </label><br>
+    <label for="author"> Author
+        <form:select path="authors" items="${authors}" itemLabel="firstName" itemValue="id" multiple="true" id="author">
+        </form:select>
+    </label>
 
     <div><input type="submit"></div>
 </form:form>

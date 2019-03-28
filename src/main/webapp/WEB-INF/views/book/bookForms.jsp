@@ -19,13 +19,17 @@
 
     <h2>Book data:</h2>
 
-    <form:form method="post" modelAttribute="book" action="getBook">
-        <h2>
-            Title:
-            <form:input path="title" />
-        </h2>
-             <form:hidden path="id" />
-            <input type="submit" value="Send">
-    </form:form>
+    <%--<form:form method="post" modelAttribute="book" action="getBook">--%>
+        <%--<h2>--%>
+            <%--Title:--%>
+            <%--<form:input path="title" />--%>
+        <%--</h2>--%>
+        <%--&lt;%&ndash;<h2>&ndash;%&gt;--%>
+            <%--&lt;%&ndash;Author:<br>&ndash;%&gt;--%>
+            <%--&lt;%&ndash;<form:select path="authors" items="${authors}" itemLabel="firstName" itemValue="id" multiple="true"/><br>&ndash;%&gt;--%>
+        <%--&lt;%&ndash;</h2>&ndash;%&gt;--%>
+             <%--<form:hidden path="id" />--%>
+            <%--<input type="submit" value="Send">--%>
+    <%--</form:form>--%>
 </body>
 </html>
