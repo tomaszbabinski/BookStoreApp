@@ -1,6 +1,6 @@
 package pl.coderslab.spring01hibernate.entity;
 
-import lombok.Data;
+
 
 import javax.persistence.*;
 import java.util.HashSet;

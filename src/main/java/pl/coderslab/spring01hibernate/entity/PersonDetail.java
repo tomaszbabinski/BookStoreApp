@@ -1,10 +1,8 @@
 package pl.coderslab.spring01hibernate.entity;
 
-import lombok.Data;
-
 import javax.persistence.*;
-
-
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 @Entity
 @Table(name="personDetails")

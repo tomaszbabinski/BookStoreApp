@@ -42,10 +42,22 @@ public class AuthorController {
     }
 
 
-    @PostMapping(value = "/edit")
+    @PostMapping("/edit")
     public String edit(@ModelAttribute Author author) {
         authorDao.update(author);
         return "redirect:list";
     }
 
+    @GetMapping("/confirmDeletingAuthor/{id}")
+    public String remove(@PathVariable Long id, Model model) {
+        Author author = authorDao.findById(id);
+        model.addAttribute("author", author);
+        return "author/remove";
+    }
+
+    @PostMapping("/deleteAuthor")
+    public String remove(@ModelAttribute Author author){
+        //TODO
+        return "redirect:list";
+    }
 }

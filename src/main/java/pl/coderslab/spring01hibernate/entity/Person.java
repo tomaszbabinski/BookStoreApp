@@ -1,11 +1,10 @@
 package pl.coderslab.spring01hibernate.entity;
 
-
-
-import lombok.Data;
-
 import javax.persistence.*;
-
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.OneToOne;
 
 @Entity
 @Table(name="persons")
@@ -69,5 +68,16 @@ public class Person {
 
     public void setPersonDetail(PersonDetail personDetail) {
         this.personDetail = personDetail;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", personDetail=" + personDetail +
+                '}';
     }
 }

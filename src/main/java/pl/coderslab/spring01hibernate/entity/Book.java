@@ -1,6 +1,6 @@
 package pl.coderslab.spring01hibernate.entity;
 
-import lombok.Data;
+
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -24,13 +24,19 @@ public class Book {
 
     private BigDecimal rating;
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 
     private String description;
 
     private Integer pages;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+
 
     public Book() {
     }
@@ -44,6 +50,14 @@ public class Book {
     public Book(String title, Author author) {
         this.title = title;
         this.authors.add(author);
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public Long getId() {
@@ -100,5 +114,18 @@ public class Book {
 
     public void setPages(Integer pages) {
         this.pages = pages;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", authors=" + authors +
+                ", rating=" + rating +
+                ", publisher=" + publisher +
+                ", description='" + description + '\'' +
+                ", pages=" + pages +
+                '}';
     }
 }

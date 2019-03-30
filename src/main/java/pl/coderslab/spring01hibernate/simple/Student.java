@@ -1,11 +1,11 @@
 package pl.coderslab.spring01hibernate.simple;
 
 
-import lombok.Data;
+
 
 import java.util.List;
 
-@Data
+
 public class Student {
 
     private String firstName;

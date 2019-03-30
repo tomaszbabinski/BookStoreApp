@@ -1,16 +1,15 @@
 package pl.coderslab.spring01hibernate.entity;
 
-
-import lombok.Data;
-
 import javax.persistence.*;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.ManyToMany;
 import java.util.HashSet;
 import java.util.Set;
 
-
 @Entity
 @Table(name = "authors")
-
 public class Author {
 
 
