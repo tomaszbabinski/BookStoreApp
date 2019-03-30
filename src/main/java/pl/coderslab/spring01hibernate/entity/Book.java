@@ -121,7 +121,7 @@ public class Book {
         return "Book{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", authors=" + authors +
+                //", authors=" + authors +
                 ", rating=" + rating +
                 ", publisher=" + publisher +
                 ", description='" + description + '\'' +

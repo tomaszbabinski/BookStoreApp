@@ -74,7 +74,7 @@ public class Publisher {
                 ", name='" + name + '\'' +
                 ", nip='" + nip + '\'' +
                 ", regon='" + regon + '\'' +
-                ", books=" + books +
+               // ", books=" + books +
                 '}';
     }
 }

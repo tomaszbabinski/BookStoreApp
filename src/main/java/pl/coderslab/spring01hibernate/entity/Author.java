@@ -21,7 +21,7 @@ public class Author {
 
     private String lastName;
 
-    @ManyToMany(mappedBy = "authors", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "authors", fetch = FetchType.EAGER)
     //@JsonIgnore
     private Set<Book> books = new HashSet<>();
 
@@ -94,5 +94,18 @@ public class Author {
 
     public void setYearOfBirth(Integer yearOfBirth) {
         this.yearOfBirth = yearOfBirth;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                //", books=" + books +
+                ", email='" + email + '\'' +
+                ", pesel='" + pesel + '\'' +
+                ", yearOfBirth=" + yearOfBirth +
+                '}';
     }
 }

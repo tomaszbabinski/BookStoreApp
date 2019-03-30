@@ -11,9 +11,12 @@ import pl.coderslab.spring01hibernate.entity.Author;
 import pl.coderslab.spring01hibernate.entity.Book;
 import pl.coderslab.spring01hibernate.entity.Category;
 import pl.coderslab.spring01hibernate.entity.Publisher;
+import pl.coderslab.spring01hibernate.repository.AuthorRepository;
 import pl.coderslab.spring01hibernate.repository.BookRepository;
 import pl.coderslab.spring01hibernate.repository.CategoryRepository;
+import pl.coderslab.spring01hibernate.repository.PublisherRepository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
@@ -21,6 +24,8 @@ import java.util.List;
 public class BookController {
 
     private CategoryRepository categoryRepository;
+    private AuthorRepository authorRepository;
+    private PublisherRepository publisherRepository;
     private BookRepository bookRepository;
     private PublisherDao publisherDao;
     private BookDao bookDao;
@@ -28,12 +33,14 @@ public class BookController {
 
     @Autowired
     public BookController(PublisherDao publisherDao, BookDao bookDao, AuthorDao authorDao,BookRepository bookRepository,
-    CategoryRepository categoryRepository) {
+    CategoryRepository categoryRepository, AuthorRepository authorRepository, PublisherRepository publisherRepository) {
         this.publisherDao = publisherDao;
         this.bookDao = bookDao;
         this.authorDao = authorDao;
         this.bookRepository = bookRepository;
         this.categoryRepository = categoryRepository;
+        this.authorRepository = authorRepository;
+        this.publisherRepository = publisherRepository;
     }
 
 
@@ -142,6 +149,47 @@ public class BookController {
 
             html+="<div>"+b.toString()+"</div>";
         }
+
+        html+="<div>By CategoryID</div>";
+
+
+        final List<Book> booksByCategoryId = bookRepository.findAllByCategoryId(1L);
+        for(Book b: booksByCategoryId) {
+
+            html+="<div>"+b.toString()+"</div>";
+        }
+
+        html+="<div>By AuthorID</div>";
+
+        final List<Book> booksByAuthorId = bookRepository.findAllByAuthorsId(1L);
+        for(Book b: booksByAuthorId) {
+
+            html+="<div>"+b.toString()+"</div>";
+        }
+
+        html+="<div>By Publisher</div>";
+
+        final Publisher publisher = publisherRepository.findOne(1L);
+        final List<Book> booksByPublisher = bookRepository.findAllByPublisher(publisher);
+        for(Book b: booksByPublisher) {
+
+            html+="<div>"+b.toString()+"</div>";
+        }
+
+        html+="<div>By Rating</div>";
+
+        final List<Book> booksByRating = bookRepository.findAllByRating(new BigDecimal(10));
+        for(Book b: booksByRating) {
+
+            html+="<div>"+b.toString()+"</div>";
+        }
+
+        html+="<div>First by Category sorted by title</div>";
+
+        final Book book = bookRepository.findFirstBookByCategoryOrderByTitleAsc(category);
+
+        html+="<div>"+book.toString()+"</div>";
+
 
         return html;
 
