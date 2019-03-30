@@ -16,7 +16,7 @@ public interface AuthorRepository extends JpaRepository<Author,Long> {
     List<Author> findByLastName(String lastName);
 
     @Query("SELECT a FROM Author a WHERE a.email LIKE :beginning%")
-    List<Author> findByEmailBeginningQuery(@Param("beginning")String beginning);
+    List<Author> findByEmailBeginningWithQuery(@Param("beginning")String beginning);
 
     @Query("SELECT a FROM Author a WHERE a.pesel LIKE :beginning%")
     List<Author> findByPeselBeginningWithQuery(@Param("beginning")String beginning);

@@ -225,4 +225,11 @@ public class BookController {
 
     }
 
+    @GetMapping("/updateRating/{rating}")
+    @ResponseBody
+    public String updateRating(@PathVariable BigDecimal rating){
+        bookRepository.resetRating(rating);
+        return "Success!";
+    }
+
 }

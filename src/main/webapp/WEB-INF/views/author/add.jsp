@@ -16,6 +16,9 @@
         <label for="lastName"> Last Name
             <form:input type="text" path="lastName" id="lastName"></form:input>
         </label>
+        <label for="email"> Email
+            <form:input type="text" path="email" id="email"></form:input>
+        </label>
         <div><input type="submit"></div>
 
 

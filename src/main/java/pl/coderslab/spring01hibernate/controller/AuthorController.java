@@ -6,13 +6,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.spring01hibernate.dao.AuthorDao;
 import pl.coderslab.spring01hibernate.entity.Author;
+import pl.coderslab.spring01hibernate.repository.AuthorRepository;
 
 @Controller
 @RequestMapping("/author")
 public class AuthorController {
 
-    @Autowired
+
     AuthorDao authorDao;
+    AuthorRepository authorRepository;
+
+    @Autowired
+    public AuthorController(AuthorDao authorDao, AuthorRepository authorRepository) {
+        this.authorDao = authorDao;
+        this.authorRepository = authorRepository;
+    }
 
     @GetMapping("/add")
     public String addAuthor(Model model){
@@ -60,4 +68,13 @@ public class AuthorController {
         //TODO
         return "redirect:list";
     }
+
+    //Exercises day 4
+
+    @GetMapping("/test/findByEmail/{param}")
+    @ResponseBody
+    public String findByEmailBeginningWith(@PathVariable String param){
+        return authorRepository.findByEmailBeginningWithQuery(param).toString();
+    }
+
 }

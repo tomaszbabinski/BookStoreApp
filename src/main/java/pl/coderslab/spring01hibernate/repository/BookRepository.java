@@ -10,7 +10,7 @@ import pl.coderslab.spring01hibernate.entity.Publisher;
 import java.math.BigDecimal;
 import java.util.List;
 
-public interface BookRepository extends JpaRepository<Book,Long> {
+public interface BookRepository extends JpaRepository<Book,Long>, BookRepositoryCustom  {
 
     List<Book> findAllByTitle(String title);
     List<Book> findAllByCategory(Category category);
