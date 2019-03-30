@@ -195,4 +195,34 @@ public class BookController {
 
     }
 
+
+    @GetMapping("/test/bookByTitle/{title}")
+    @ResponseBody
+    public String getBookByTitle(@PathVariable String title){
+        return bookRepository.returnBooksByTitle(title).toString();
+    }
+
+    @GetMapping("/test/bookByCategory/{categoryId}")
+    @ResponseBody
+    public String getBookByCategory(@PathVariable Long categoryId){
+        Category cat = categoryRepository.findOne(categoryId);
+        return bookRepository.returnBooksbyCategory(cat).toString();
+    }
+
+    @GetMapping("/test/booksByRatingRange/{min}/{max}")
+    @ResponseBody
+    public String getBookByRatingRange(@PathVariable BigDecimal min, @PathVariable BigDecimal max){
+
+        return bookRepository.returnBooksfromRatingRange(min,max).toString();
+    }
+
+    @GetMapping("/test/booksByCatSortByTitle/{categoryId}")
+    @ResponseBody
+    public String getBookByCatSortByTitle(@PathVariable Long categoryId) {
+        Category cat = categoryRepository.findOne(categoryId);
+        return bookRepository.findFirstBookByCategorySortedByTitleQuery(categoryId).toString();
+
+
+    }
+
 }
